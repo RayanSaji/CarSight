@@ -1,0 +1,150 @@
+Overview
+This issue defines the initial database schema for the Vehicle Library, which powers both:
+
+the Reliability Engine
+
+the Listing Analyzer
+
+the Library browsing page
+
+The library will store structured information about vehicle makes, models, and years so the analysis engine can evaluate listings without relying on external lookups every time.
+
+The goal is to design a lightweight, scalable schema optimized for Supabase (Postgres).
+
+Goals
+The vehicle library must:
+
+Store vehicle hierarchy (Make → Model → Year)
+
+Track reliability tiers
+
+Store common problems
+
+Store basic vehicle metadata
+
+Support fast lookup by vehicle attributes
+
+Minimize storage requirements
+
+The system should initially focus on popular vehicles, expanding over time.
+
+Core Data Hierarchy
+Vehicles follow a hierarchical structure:
+
+Make → Model → Year → Trim (optional)
+Example:
+
+Toyota → Camry → 2018 → SE
+Toyota → Camry → 2018 → XLE
+Trims can be optional in v1 to simplify implementation.
+
+Database Tables
+makes
+Stores vehicle manufacturers.
+
+Field | Type | Description -- | -- | -- id | uuid | primary key name | text | manufacturer name country | text | country of origin created_at | timestamp | record creation
+Example Relationship
+makes
+  └ models
+       └ vehicle_years
+            └ common_issues
+This structure allows the analysis engine to quickly retrieve:
+
+reliability tier
+
+known issues
+
+expected lifespan
+
+Supabase Table Creation Example
+Example SQL:
+
+CREATE TABLE makes (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  name text NOT NULL,
+  country text,
+  created_at timestamp DEFAULT now()
+);
+CREATE TABLE models (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  make_id uuid REFERENCES makes(id),
+  name text NOT NULL,
+  category text,
+  created_at timestamp DEFAULT now()
+);
+CREATE TABLE vehicle_years (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  model_id uuid REFERENCES models(id),
+  year integer NOT NULL,
+  reliability_tier text,
+  average_market_price numeric,
+  typical_mileage_lifespan integer,
+  created_at timestamp DEFAULT now()
+);
+Query Example
+Example query for retrieving vehicle reliability:
+
+SELECT
+m.name AS make,
+mo.name AS model,
+vy.year,
+vy.reliability_tier
+FROM vehicle_years vy
+JOIN models mo ON vy.model_id = mo.id
+JOIN makes m ON mo.make_id = m.id
+WHERE m.name = 'Toyota'
+AND mo.name = 'Camry'
+AND vy.year = 2018;
+Storage Strategy
+To minimize storage usage:
+
+Store common issues only once per model-year
+
+Avoid storing trims initially
+
+Expand only when needed
+
+Focus on popular vehicles first
+
+The dataset can grow gradually.
+
+Future Schema Extensions
+Possible future tables:
+
+trims
+vehicle_year → trim
+maintenance_costs
+Estimated yearly ownership costs.
+
+reliability_scores
+Numeric reliability scoring.
+
+market_data
+Regional price signals.
+
+Integration With Analysis Engine
+The listing analyzer will query the vehicle library to retrieve:
+
+reliability tier
+
+common issues
+
+expected lifespan mileage
+
+typical price signals
+
+This data feeds into the Deal Score Algorithm.
+
+Success Criteria
+The schema must:
+
+support fast vehicle lookup
+
+remain easy to expand
+
+minimize database size
+
+integrate cleanly with Supabase
+
+support the reliability scoring system
+

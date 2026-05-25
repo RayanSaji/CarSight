@@ -1,0 +1,354 @@
+Deep Research Plan — AI Vehicle Deal Intelligence Platform
+Overview
+This issue defines the deep research scope required to design and build an AI-powered vehicle deal intelligence platform.
+
+The goal is to determine the best architecture, data sources, scoring models, and product surface before development begins.
+
+This research will guide the implementation of a web-first car shopping assistant that evaluates used vehicle listings and helps users determine whether a car is a good deal, overpriced, risky, or suspicious.
+
+Product Vision
+The platform will help users answer one simple but high-stakes question:
+
+"Should I buy this car at this price with this mileage?"
+
+The system will analyze used car listings and generate a structured evaluation report containing:
+
+Deal score
+
+Reliability insights
+
+Scam / risk flags
+
+Recall data
+
+Inspection checklist
+
+Negotiation suggestions
+
+The product aims to replace hours of manual research across forums, KBB, and recall databases with a single analysis engine.
+
+Primary Capabilities
+1. Listing Analysis
+Users will provide information about a listing such as:
+
+Listing text
+
+VIN (optional)
+
+Price
+
+Mileage
+
+Location
+
+Year / Make / Model
+
+The system will analyze the listing and determine:
+
+Deal quality (good / fair / overpriced)
+
+Potential risk factors
+
+Reliability concerns
+
+Suggested negotiation strategy
+
+2. Reliability Engine
+A reliability analysis system that evaluates:
+
+Known issues by make / model / year
+
+Typical failure points
+
+Ownership risk level
+
+Estimated reliability tier
+
+The reliability engine must use structured data and rules, not AI hallucination.
+
+AI may assist in explaining results, but not generating them.
+
+3. Vehicle Library
+A browsable vehicle knowledge base containing:
+
+make
+
+model
+
+year
+
+trim
+
+reliability category
+
+common problems
+
+typical price ranges
+
+This database powers both:
+
+the listing analysis engine
+
+a searchable car research interface
+
+4. User Profiles
+Users may complete a car preference quiz to build a profile including:
+
+budget
+
+reliability tolerance
+
+preferred brands
+
+preferred vehicle types
+
+Future features may include:
+
+deal alerts
+
+suggested offers
+
+personalized recommendations
+
+Research Objectives
+The research should answer the critical architectural and product questions required to build the platform.
+
+Product Architecture
+Determine the best product surface for the first version:
+
+Standalone web application
+
+Browser extension
+
+Hybrid system (web app + extension)
+
+Evaluate tradeoffs including:
+
+development complexity
+
+long-term maintainability
+
+user experience
+
+reliability
+
+marketplace integration limitations
+
+Marketplace Listing Analysis
+Investigate reliable methods for analyzing listings from marketplaces such as:
+
+Facebook Marketplace
+
+Craigslist
+
+Autotrader
+
+CarGurus
+
+Focus on approaches that avoid brittle scraping or platform violations.
+
+Possible approaches include:
+
+user-pasted listing text
+
+structured listing inputs
+
+browser extension parsing
+
+Deal Evaluation Models
+Research how existing platforms determine vehicle value, including:
+
+Kelley Blue Book
+
+Edmunds
+
+CarGurus
+
+AutoTempest
+
+Key factors to investigate:
+
+price vs mileage adjustments
+
+regional pricing differences
+
+depreciation curves
+
+condition assumptions
+
+market supply / demand effects
+
+Goal: design a transparent and explainable deal scoring system.
+
+Reliability Scoring
+Research available data sources that can support a reliability scoring engine.
+
+Possible sources include:
+
+NHTSA recall data
+
+vehicle defect databases
+
+repair frequency datasets
+
+public vehicle reliability studies
+
+large-scale automotive forums
+
+The goal is to create a rules-based reliability engine.
+
+Vehicle Data Library Architecture
+Research best practices for structuring a vehicle knowledge base containing:
+
+make
+
+model
+
+year
+
+trim
+
+reliability tier
+
+common issues
+
+pricing signals
+
+The system should:
+
+minimize storage requirements
+
+remain scalable
+
+work efficiently with Postgres / Supabase
+
+Data Sources
+Identify reliable datasets or APIs for:
+
+VIN decoding
+
+vehicle specifications
+
+recall data
+
+safety ratings
+
+market pricing signals
+
+Evaluate:
+
+cost
+
+reliability
+
+licensing
+
+long-term sustainability
+
+User Experience Design
+Research UX patterns that allow users to quickly understand whether a car is a good deal.
+
+Relevant UX examples include:
+
+price comparison tools
+
+financial decision dashboards
+
+car research platforms
+
+Focus on designs that help non-technical users understand complex vehicle information quickly.
+
+Research Scope
+Included
+Listing analysis architecture
+
+Reliability scoring models
+
+Vehicle data modeling
+
+Browser extension vs web app analysis
+
+Low-cost infrastructure
+
+Supabase + Vercel architecture
+
+Deal scoring models
+
+Data source recommendations
+
+Excluded
+The following features are not part of the initial research scope:
+
+automated seller messaging
+
+negotiation bots
+
+payment systems
+
+financing integrations
+
+insurance integrations
+
+full marketplace scraping platforms
+
+mobile apps
+
+Depth Requirements
+Area | Depth -- | -- Market Analysis | Deep Technical Architecture | Comprehensive Competitor Analysis | Surface Implementation Options | Deep Cost Analysis | Deep
+Source Priority
+Technical documentation
+
+GitHub repositories
+
+User forums / Reddit
+
+Competitor analysis
+
+Industry reports
+
+Case studies
+
+Academic papers
+
+Infrastructure Constraints
+The system must initially operate within $0 startup cost constraints.
+
+Hosting
+Vercel (free tier)
+
+Database
+Supabase (free tier)
+
+Expected Load
+Very low early-stage user traffic
+
+Architecture should optimize for speed of development over scaling.
+
+Expected Deliverables
+The research output should produce:
+
+Recommended system architecture
+
+Suggested vehicle data schema
+
+Proposed deal scoring model
+
+Reliable vehicle data sources
+
+Comparison of web app vs extension approach
+
+Infrastructure design using Supabase + Vercel
+
+Estimated operating costs
+
+Business Context
+This project currently serves multiple purposes:
+
+Personal tool for evaluating car purchases
+
+Portfolio / resume project
+
+Startup experiment
+
+Possible future commercial platform
+

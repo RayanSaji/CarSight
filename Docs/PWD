@@ -1,0 +1,319 @@
+Product Name: CarSight
+Problem Statement: CarSight helps inexperienced car buyers navigate the used car market by analyzing private seller listings and translating complex pricing and reliability information into simple, actionable insights.
+
+MVP Goal: Build a working web-based listing analysis platform that can evaluate real vehicle listings and provide useful buying guidance.
+
+Target Launch: Flexible / development begins immediately after PRD completion.
+
+Target Users
+Primary User Profile
+Who
+First-time car buyers
+Inexperienced car shoppers
+Users who know little about vehicle reliability or pricing
+Buyers browsing private seller marketplaces like Facebook Marketplace or Craigslist
+Their Main Problems
+They don’t know if a car is reliable
+They don’t know if the asking price is fair
+There are too many vehicle options and trims
+Listings are inconsistent and hard to interpret
+They are afraid of overpaying or buying a problematic car
+Current Solutions
+Users currently:
+
+browse private seller marketplaces manually
+occasionally check Kelley Blue Book
+ask friends/family for help
+search random forums
+mostly guess
+User Persona Example
+“Emily”
+Emily is a college student looking for her first real car. She likes BMWs because they look sporty and luxurious, but she has no idea which models are reliable or expensive to maintain.
+
+She browses private seller listings online but struggles to:
+
+understand pricing
+compare options
+identify scams
+know what issues to look for
+She wants a simple tool that explains:
+“Is this car actually a good idea?”
+
+User Journey
+Discovery
+The user finds a car listing online through a private seller marketplace.
+
+Entry Point
+MVP Workflow (Web App)
+The user:
+
+Copies a vehicle listing
+Pastes it into CarSight
+Uploads optional screenshots/PDFs/Carfax files
+Presses “Analyze”
+Core System Analysis
+CarSight evaluates:
+
+listing price
+mileage
+year/make/model
+market value
+reliability data
+common issues
+recall/safety signals
+suspicious listing patterns
+User Output
+The user receives:
+
+Deal Score
+Reliability Score
+Confidence Rating
+Risk Flags
+Common Problems
+Inspection Tips
+Negotiation Suggestions
+User Value
+The app acts as:
+
+a decision-support tool
+an educational assistant
+a convenience platform
+The goal is to simplify the used car market for non-experts.
+
+MVP Features
+1. Listing Analysis Engine
+Description
+Allows users to:
+
+paste listings
+upload screenshots
+upload PDFs or Carfax reports
+manually enter car information
+Why Essential
+This is the main entry point of the product.
+
+2. Vehicle Valuation Engine
+Description
+Determines:
+
+estimated market value
+overpricing/underpricing
+fair value range
+Potentially using:
+
+internal pricing algorithms
+market comparison data
+future external APIs
+Why Essential
+Users need fast answers to:
+“Is this actually worth the asking price?”
+
+3. Reliability + Risk Engine
+Description
+Analyzes:
+
+known vehicle issues
+engine/platform reliability
+ownership risks
+recalls
+common failures
+Outputs:
+
+reliability score
+ownership risk level
+common issue summaries
+Why Essential
+Most inexperienced buyers do not understand long-term reliability differences between cars.
+
+4. Confidence / Suspicion Rating
+Description
+Analyzes listing trustworthiness using:
+
+unrealistic pricing
+suspicious listing details
+incomplete information
+inconsistent data
+Outputs:
+
+confidence score
+risk warnings
+possible scam indicators
+Why Essential
+Helps protect inexperienced buyers from bad or suspicious listings.
+
+5. Negotiation Assistant
+Description
+Provides:
+
+suggested offers
+talking points
+negotiation leverage
+issue-based questions to ask sellers
+Example:
+“This model commonly develops transmission issues around 100k miles. Ask whether this repair has already been completed.”
+
+Why Essential
+Helps users negotiate using real information rather than guessing.
+
+NOT in MVP
+Excluded Features
+Browser Extension
+Will come later after:
+
+analysis engine validation
+UI stabilization
+successful testing
+Mobile App
+The product is web-first initially.
+
+Responsive design is required, but native iOS/Android apps are excluded from MVP scope.
+
+Large Public Launch
+Initial testing will remain:
+
+local
+friends/family
+limited beta users
+before scaling publicly.
+
+Success Metrics
+Short-Term Success
+Build a fully functional MVP
+Analyze real listings successfully
+Test with friends/family
+Improve scoring accuracy
+Medium-Term Success
+Gain active users
+Attract users who regularly shop/resell cars
+Validate user trust in recommendations
+Explore monetization opportunities
+UI / UX Direction
+Design Goals
+clean
+modern
+beginner-friendly
+educational
+straightforward
+UX Philosophy
+The interface should:
+
+simplify complex car information
+avoid overwhelming users
+prioritize readability
+present insights quickly
+Advanced users may:
+
+expand advanced tabs
+use deeper filters
+access technical insights
+Planned UX Patterns
+dropdown filters
+tabs
+collapsible advanced details
+color-coded indicators
+simple scoring visuals
+Key Screens
+Homepage
+Listing input
+Upload area
+Analyze button
+Analysis Report Page
+Deal Score
+Reliability Score
+Confidence Rating
+Risk Warnings
+Negotiation Advice
+Vehicle Library
+Browse makes/models
+Reliability information
+Common issues
+Saved Reports
+Analysis history
+Vehicle comparisons
+Profile / Preferences
+Budget
+Reliability tolerance
+Preferred brands
+Technical Considerations
+Platform
+Responsive web application.
+
+Initial Stack
+Next.js
+Supabase
+Vercel
+Potential future integrations:
+
+Stripe
+AI APIs
+VIN decoding APIs
+vehicle pricing APIs
+Infrastructure Constraints
+Free/low-cost startup budget
+Optimize for development speed
+Low expected early traffic
+Account Tiers
+Developer/Admin Account
+Full unrestricted access for development/testing.
+
+Free Users
+Basic analysis functionality with usage limitations.
+
+Paid Users (Future)
+Potential premium features:
+
+AI assistant access
+advanced reports
+deeper analysis
+extended searches
+Purpose:
+
+offset API and infrastructure costs
+Non-Functional Requirements
+Performance
+fast report generation
+responsive UI
+optimized loading
+Accessibility
+readable UI
+beginner-friendly language
+simplified outputs
+Scalability
+The architecture should eventually support:
+
+larger listing databases
+more users
+browser extension integrations
+Risks
+Risk	Impact	Mitigation
+Marketplace restrictions	High	Start with manual input workflow
+Poor scoring accuracy	High	Continuous real-world testing
+Feature overload	Medium	Focus strictly on MVP
+API costs	Medium	Gate AI features behind paid plans
+Data reliability	High	Use structured/rules-based logic
+MVP Completion Checklist
+Development
+
+Listing input workflow complete
+
+Deal score engine working
+
+Reliability engine functional
+
+Report page complete
+
+Responsive design working
+Testing
+
+Real listings tested
+
+Friends/family testing complete
+
+Core flows validated
+Deployment
+
+Supabase configured
+
+Vercel deployment working
+
+Basic analytics enabled

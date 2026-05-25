@@ -1,0 +1,112 @@
+Overview
+This project aims to build a vehicle due-diligence engine that helps buyers evaluate whether a specific car is a smart purchase before committing money.
+
+The goal is to reduce uncertainty, research time, and financial risk when purchasing used or new vehicles.
+
+This is not a marketplace or listing aggregator.
+It is a decision-support system that analyzes a vehicle and generates a structured risk and value report.
+
+Problem Statement
+Buying a vehicle requires navigating:
+
+Inconsistent pricing
+Hidden recalls
+Reliability concerns
+High mileage uncertainty
+Potential scams
+Emotional bias during negotiation
+Most buyers manually research forums, recall databases, pricing sites, and reliability reports across multiple sources.
+
+This project consolidates those steps into a single structured analysis.
+
+Core Functionality
+User Input
+The system will accept:
+
+VIN (optional but recommended)
+Year
+Make
+Model
+Trim (optional)
+Mileage
+Asking price
+ZIP code / location
+Optional listing text
+System Architecture (High-Level)
+1. Data Layer (Structured & Factual)
+VIN decoding via NHTSA vPIC
+Recall data retrieval
+Vehicle specifications
+Safety data
+Stored reliability heuristics
+This layer provides verifiable, structured data.
+
+2. Scoring Engine (Deterministic Logic)
+The system calculates:
+
+Deal Score (0–100)
+Price-to-mileage evaluation
+Risk tier classification (Low / Medium / High)
+Recall severity weighting
+Reliability category
+This layer must be rules-based and explainable.
+No AI-generated guessing is allowed in scoring logic.
+
+3. AI Reasoning Layer
+The AI layer is responsible for:
+
+Explaining score breakdown
+Summarizing common issues
+Generating inspection checklist
+Producing negotiation guidance
+Highlighting walk-away conditions
+The AI must only reason on provided structured data.
+It must not hallucinate facts or invent reliability claims.
+
+Output
+The system generates a structured report containing:
+
+Deal Score
+Risk Level
+Recall Summary
+Known Reliability Concerns
+What to Inspect
+Negotiation Advice
+Clear disclaimers
+What This Project Is Not
+Not a car listing site
+Not a marketplace
+Not scraping-dependent
+Not a replacement for a mechanic inspection
+Not generic financial advice
+It is a vehicle risk assessment and decision-support tool.
+
+Primary Objective
+Provide buyers with a clear answer to:
+
+"Should I buy this car at this price with this mileage?"
+
+Secondary objective:
+
+Reduce research time and increase confidence before purchase.
+
+Long-Term Potential
+Comparison engine (evaluate multiple cars)
+PDF exportable reports
+Shareable analysis links
+Subscription model for advanced reports
+Expansion to other vehicle categories
+Success Criteria (MVP)
+End-to-end analysis works
+Real VIN & recall data integrated
+Deterministic scoring implemented
+AI explanations tied to structured inputs
+No fabricated facts
+Clear risk interpretation
+Strategic Positioning
+This project serves as:
+
+A full-stack AI system demonstration
+A data-driven scoring engine example
+A practical tool for real-world financial decisions
+A foundation for potential startup expansion

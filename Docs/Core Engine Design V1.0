@@ -1,0 +1,107 @@
+Overview
+This issue defines the first version of the Deal Score Algorithm, the core intelligence behind the vehicle analysis engine.
+
+The Deal Score determines whether a car listing is:
+
+Good Deal
+
+Fair Price
+
+Overpriced
+
+Potentially Risky
+
+The algorithm must be deterministic, explainable, and data-driven.
+
+AI will not determine the score — it will only explain the results to the user.
+
+Goal
+Provide users with a simple, trustworthy summary of a vehicle listing by combining:
+
+market price signals
+
+mileage adjustments
+
+reliability risk
+
+recall information
+
+listing red flags
+
+All factors will combine into a Deal Score (0–100).
+
+Deal Score Breakdown
+The score will be calculated using weighted components.
+
+Factor | Weight | Purpose -- | -- | -- Price vs Market Value | 40% | Determine if the car is priced fairly Mileage Evaluation | 20% | Penalize excessive mileage Reliability Tier | 20% | Assess known issues and brand reliability Recall / Safety Issues | 10% | Penalize active recalls or safety problems Listing Risk Flags | 10% | Detect suspicious listings
+AI Explanation Layer
+Once the score is calculated, the AI system will:
+
+explain why the score was assigned
+
+highlight key positives
+
+highlight risks
+
+generate inspection checklist
+
+suggest negotiation strategy
+
+Example output:
+
+"This vehicle is slightly under market value but has above-average mileage and known transmission issues. Consider negotiating 5–10% below the asking price."
+
+🏗 Implementation Notes
+The algorithm should be implemented as a server-side scoring engine.
+
+Example endpoint:
+
+POST /api/analyze-listing
+Input:
+
+{
+  year,
+  make,
+  model,
+  trim,
+  mileage,
+  price,
+  location,
+  vin
+}
+Output:
+
+{
+  deal_score,
+  price_score,
+  mileage_score,
+  reliability_score,
+  recall_score,
+  risk_score,
+  explanation
+}
+Future Improvements
+Possible upgrades for later versions:
+
+machine learning pricing models
+
+regional market adjustments
+
+real-time market comps
+
+auction price signals
+
+ownership cost predictions
+
+Success Criteria
+The algorithm should:
+
+produce consistent results
+
+be explainable
+
+avoid AI hallucinations
+
+provide clear user guidance
+
+function with minimal input data
